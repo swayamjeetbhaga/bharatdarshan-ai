@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdf8f1;
+  --foreground: #23201b;
+  --card: #ffffff;
+  --card-foreground: #23201b;
+  --border: rgba(35, 32, 27, 0.1);
+  --muted: #7a7266;
+  --primary: #dd6b20;
+  --primary-foreground: #ffffff;
+  --secondary: #0f5257;
+  --secondary-foreground: #ffffff;
+  --accent: #c99a2e;
+  --accent-foreground: #23201b;
+  /* A deep-teal "banner" surface (hero sections, chat header) that stays dark
+     in both themes — unlike --secondary, which intentionally flips to a light
+     tone in dark mode so it still reads as text/accent color on dark cards. */
+  --hero: #0f5257;
+  --hero-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+}
+
+/* System preference — only applies when the user hasn't made an explicit
+   choice via the navbar toggle (data-theme unset, or not "light"). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #101a1b;
+    --foreground: #f3ece0;
+    --card: #17282a;
+    --card-foreground: #f3ece0;
+    --border: rgba(243, 236, 224, 0.12);
+    --muted: #9aa3a0;
+    --primary: #f0924d;
+    --primary-foreground: #1b1000;
+    --secondary: #6fc6ca;
+    --secondary-foreground: #06181a;
+    --accent: #e3b85c;
+    --accent-foreground: #1b1000;
+    --hero: #0a2e30;
+    --hero-foreground: #f3ece0;
+  }
+}
+
+/* Explicit choice from the navbar toggle — wins over system preference in
+   both directions. */
+:root[data-theme="dark"] {
+  --background: #101a1b;
+  --foreground: #f3ece0;
+  --card: #17282a;
+  --card-foreground: #f3ece0;
+  --border: rgba(243, 236, 224, 0.12);
+  --muted: #9aa3a0;
+  --primary: #f0924d;
+  --primary-foreground: #1b1000;
+  --secondary: #6fc6ca;
+  --secondary-foreground: #06181a;
+  --accent: #e3b85c;
+  --accent-foreground: #1b1000;
+  --hero: #0a2e30;
+  --hero-foreground: #f3ece0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.leaflet-popup-content {
+  margin: 0.65rem 0.9rem;
+}
+
+/* Keep every result identifiable without requiring a click on its pin. */
+.leaflet-tooltip.bharatdarshan-place-label {
+  max-width: 12rem;
+  overflow: hidden;
+  border: 1px solid rgba(15, 82, 87, 0.32);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+  color: #17383a;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.2;
+  padding: 0.25rem 0.45rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaflet-tooltip-top.bharatdarshan-place-label::before {
+  border-top-color: rgba(255, 255, 255, 0.94);
+}
